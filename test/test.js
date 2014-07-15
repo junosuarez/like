@@ -1,6 +1,5 @@
-var chai = require('chai')
-chai.should()
-chai.use(require('chai-interface'))
+var mochi = require('mochi')
+mochi.use(require('chai-interface'))
 
 var like = require('../index')
 
