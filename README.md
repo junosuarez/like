@@ -2,45 +2,55 @@
 build a regex from user input for filtering data
 
 ## installation
-    $ npm install like
+
+```console
+$ npm install like
+```
 
 ## usage
+```js
+var like = require('like')
 
-    var like = require('like')
+var filter = like(searchField.value)
 
-    var filter = like(searchField.value)
+var matches = items.filter(function (x) {
+  return filter.test(x)
+})
 
-    var matches = items.filter(function (x) {
-      return filter.test(x)
-    })
+// or we could get a predicate function like so:
 
-    // or we could get a predicate function like so:
+var matches = items.filter(like.fn(searchField.value))
+```
 
-    var matches = items.filter(like.fn(searchField.value))
 
 ## api
 
-### like(string) => RegExp
+Described using [jsig](https://github.com/jden/jsig):
 
-### like.startsWith(string) => RegExp
+`type Predicate : (Value) => Boolean`
 
-### like.endsWith(string) => RegExp
+### `like : (String) => RegExp`
 
-### like.fn(string) => Predicate
+### `like.startsWith : (String) => RegExp`
 
-### like.startsWithFn(string) => Predicate
+### `like.endsWith : (String) => RegExp`
 
-### like.endsWithFn(string) => Predicate
+### `like.fn : (String) => Predicate`
+
+### `like.startsWithFn : (String) => Predicate`
+
+### `like.endsWithFn : (String) => Predicate`
 
 ## running the tests
 
-    $ git clone git@github.com:AgileDiagnosis/like.git
-    $ cd like
-    $ npm install
-    $ npm test
+```console
+$ git clone git@github.com:AgileDiagnosis/like.git && cd like
+$ npm install
+$ npm test
+```
 
 ## kudos to
-substack for [quotemeta]()
+substack for [quotemeta](https://www.npmjs.org/package/quotemeta)
 
 ## contributors
 
