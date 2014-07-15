@@ -13,20 +13,23 @@ function endsWith(string){
 }
 
 function likePredicate(string) {
+  var exp = like(string)
   return function (x) {
-    return like(string).test(x)
+    return exp.test(x)
   }
 }
 
 function startsWithPredicate(string) {
+  var exp = startsWith(string) 
   return function (x) {
-    return startsWith(string).test(x)
+    return exp.test(x)
   }
 }
 
 function endsWithPredicate(string) {
+  var exp = endsWith(string) 
   return function (x) {
-    return endsWith(string).test(x)
+    return exp.test(x)
   }
 }
 
