@@ -1,32 +1,35 @@
 var quotemeta = require('quotemeta')
 
-function like(string) {
-  return new RegExp(quotemeta(string), 'i')
+function like(string, opt) {
+  var modifiers = (opt && opt.ignoreCase) ? 'i' : ''
+  return new RegExp(quotemeta(string), modifiers)
 }
 
-function startsWith(string) {
-  return new RegExp('^' + quotemeta(string), 'i')
+function startsWith(string, opt) {
+  var modifiers = (opt && opt.ignoreCase) ? 'i' : ''
+  return new RegExp('^' + quotemeta(string), modifiers)
 }
 
-function endsWith(string){
-  return new RegExp(quotemeta(string) + '$', 'i')
+function endsWith(string, opt){
+  var modifiers = (opt && opt.ignoreCase) ? 'i' : ''
+  return new RegExp(quotemeta(string) + '$', modifiers)
 }
 
-function likePredicate(string) {
-  var exp = like(string)
+function likePredicate(string, opt) {
+  var exp = like(string, opt)
   return function (x) {
     return exp.test(x)
   }
 }
 
-function startsWithPredicate(string) {
-  var exp = startsWith(string) 
+function startsWithPredicate(string, opt) {
+  var exp = startsWith(string, opt) 
   return function (x) {
     return exp.test(x)
   }
 }
 
-function endsWithPredicate(string) {
+function endsWithPredicate(string, opt) {
   var exp = endsWith(string) 
   return function (x) {
     return exp.test(x)

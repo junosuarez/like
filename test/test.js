@@ -27,11 +27,16 @@ describe('like', function () {
     regex2.test(pattern).should.equal(false)
   })
 
-  it('creates a cast insensitive regex', function () {
+  it('creates a case sensitive regex', function () {
     var regex = like('FOO')
-    regex.test('foo').should.equal(true)
+    regex.test('foo').should.equal(false)
     regex.test('FOO').should.equal(true)
     regex.test('bar').should.equal(false)
+  })
+
+  it('takes opts for case insensitive', function () {
+    like('foo', {ignoreCase: true}).test('FOO')
+      .should.equal(true)
   })
 
 })

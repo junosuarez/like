@@ -1,6 +1,6 @@
 {
   "name": "like",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "build a regex from user input for filtering data",
   "main": "index.js",
   "scripts": {

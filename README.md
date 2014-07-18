@@ -22,6 +22,11 @@ var matches = items.filter(function (x) {
 var matches = items.filter(like.fn(searchField.value))
 ```
 
+**note** As of 0.3.0, matches are case-sensitive by default. Functions take an options parameter which takes a `ignoreCase` option. Example:
+
+```js
+like('foo', {ignoreCase: true})
+```
 
 ## api
 
@@ -29,17 +34,17 @@ Described using [jsig](https://github.com/jden/jsig):
 
 `type Predicate : (Value) => Boolean`
 
-### `like : (String) => RegExp`
+### `like : (String, options: Object?) => RegExp`
 
-### `like.startsWith : (String) => RegExp`
+### `like.startsWith : (String, options: Object?) => RegExp`
 
-### `like.endsWith : (String) => RegExp`
+### `like.endsWith : (String, options: Object?) => RegExp`
 
-### `like.fn : (String) => Predicate`
+### `like.fn : (String, options: Object?) => Predicate`
 
-### `like.startsWithFn : (String) => Predicate`
+### `like.startsWithFn : (String, options: Object?) => Predicate`
 
-### `like.endsWithFn : (String) => Predicate`
+### `like.endsWithFn : (String, options: Object?) => Predicate`
 
 ## running the tests
 
